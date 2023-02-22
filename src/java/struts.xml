@@ -1,0 +1,78 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!-- Configuration for the default package. -->
+    <package name="default" namespace="/" extends="struts-default">
+        <action name="Login" class="com.exavalu.models.User" method="doLogin">
+            <result name="SUCCESS">landingPage.jsp</result>
+            <result name="FAILURE">login.jsp</result>
+        </action>
+        
+         <action name="SignUp" class="com.exavalu.models.User" method="doSignUp">
+            <result name="SUCCESS">login.jsp</result>
+            <result name="FAILURE">signup.jsp</result>
+        </action> 
+      
+        
+        <action name="Logout" class="com.exavalu.models.User" method="doLogout">
+            <result name="SUCCESS">logout.jsp</result>
+            <result name="FAILURE">login.jsp</result>
+        </action> 
+        <action name="LogFNOL" class="com.exavalu.models.Fnol" method="doLogFNOL">
+            <result name="SUCCESS">landingPage.jsp</result>
+            <result name="FAILURE">firstnoticeofloss.jsp</result>
+        </action>
+        <!--underwriter action to view lodged fnol-->
+        <action name="ViewLoggedFNOL" class="com.exavalu.models.Underwriter" method="dogetAllFNOL">
+            <result name="SUCCESS">fnollist.jsp</result>
+            <result name="FAILURE">landingPage.jsp</result>
+        </action>
+        <!--customer to see their logged fnol-->
+        <action name="ViewLoggedFNOLForCustomer" class="com.exavalu.models.Customer" method="dogetAllFNOL">
+            <result name="SUCCESS">fnollistcustomer.jsp</result>
+            <result name="FAILURE">landingPage.jsp</result>
+        </action>
+        <!--underwriter insurancemaster api call-->
+      
+        <!--underwriter dmvverification api call-->
+        <action name="FetchDMVApi" class="com.exavalu.models.Underwriter" method="dofetchDMVApi">
+            <result name="DMVDETAILS">dmvdetails.jsp</result>
+            
+        </action>
+        <action name="FetchIMasterApi" class="com.exavalu.models.Underwriter" method="dofetchInsuranceMasterApi">
+            <result name="INSURANCEDETAILS">insurancedetails.jsp</result>
+        </action>
+        <!--underwriter final verification forwarding-->
+        <action name="UnderwriterVerified" class="com.exavalu.models.Underwriter" method="doVerifiedByUnderwriter">
+            <result name="DETAILSOFCLAIM">detailsofclaim.jsp</result>
+            <result name="FAILURE">landingPage.jsp</result>
+        </action>
+        <!--rejection by underwriter-->
+        <action name="UnderwriterReject" class="com.exavalu.models.Underwriter" method="doRejectByUnderwriter">
+            <result name="DETAILSOFCLAIM">detailsofclaim.jsp</result>
+            <result name="FAILURE">landingPage.jsp</result>
+        </action>
+        
+        <action name="FetchParticularFnol" class="com.exavalu.models.Underwriter" method="dogetParticularFnol">
+            
+            <result name="DETAILSOFCLAIM">detailsofclaim.jsp</result>
+           
+        </action>
+        
+        <!--insuranceofficer verification-->
+        <action name="PendingFNOLverification" class="com.exavalu.models.InsuranceOfficer" method="dogetAllFNOLVerifiedByUnderwriter">
+            <result name="SUCCESS">fnollistforinsuranceofficer.jsp</result>
+            <result name="FAILURE">landingPage.jsp</result>
+        </action>
+        <action name="AcceptFNOL" class="com.exavalu.models.InsuranceOfficer" method="doFinalApprove">
+            <result name="SUCCESS">fnollistforinsuranceofficer.jsp</result>
+            <result name="FAILURE">landingPage.jsp</result>
+        </action>
+        <action name="RejectFNOL" class="com.exavalu.models.InsuranceOfficer" method="doFinalReject">
+            <result name="SUCCESS">fnollistforinsuranceofficer.jsp</result>
+            <result name="FAILURE">landingPage.jsp</result>
+        </action>
+    </package>
+</struts>

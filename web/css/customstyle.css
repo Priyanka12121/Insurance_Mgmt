@@ -1,0 +1,35 @@
+
+#namasteBuddy{
+    transition: transform 0.8s;
+}
+#namasteBuddy:hover{
+
+    transform: scale(1.1);
+
+}
+#carBuddy{
+    transition: transform 0.8s;
+}
+#carBuddy:hover{
+    transform: scale(1.1);
+}
+#aboutUs{
+    transition: transform 1s;
+}
+#aboutUs:hover{
+    transform: scale(1.3);
+}
+#menulinks{
+    transition: transform 0.5s;
+}
+#menulinks:hover{
+    transform: scale(1.3);
+    text-decoration: underline;
+
+    /*font-size:28px;*/
+}
+#bodyOfLoginPage{
+    background-image: url("images/backgroundLoginPage.jpg");
+}
+
+
